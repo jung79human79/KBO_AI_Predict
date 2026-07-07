@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>KBO AI 승부예측</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='calendar.css') }}">
+
+</head>
+
+<body>
+
+    <div class="predict-container">
+
+        <h1>KBO AI 승부예측</h1>
+
+        <div class="match-title">
+
+            {{ away }} (원정)
+
+            <span>VS</span>
+
+            {{ home }} 🏠
+
+        </div>
+
+        <div class="probability">
+
+            <div class="team">
+
+                <h2>{{ away }}</h2>
+
+                <div class="percent">
+
+                    {{ away_prob }}%
+
+                </div>
+
+            </div>
+
+            <div class="team">
+
+                <h2>{{ home }}</h2>
+
+                <div class="percent">
+
+                    {{ home_prob }}%
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="winner">
+
+            AI 예측 승리팀
+
+            <h2>{{ winner }}</h2>
+
+        </div>
+
+        <h2>AI 승부예측</h2>
+
+        <div class="vs-bar">
+
+            <div class="away-side" style="width:{{ away_prob }}%;">
+                {{ away }}
+                {{ away_prob }}%
+            </div>
+
+            <div class="home-side" style="width:{{ home_prob }}%;">
+                {{ home_prob }}%
+                {{ home }} 🏠
+            </div>
+
+        </div>
+        <h2>AI 승부예측</h2>
+
+        <div class="team-name">
+            {{ away }} (원정)
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar away-bar" style="width: {{ away_prob }}%;">
+                {{ away_prob }}%
+            </div>
+        </div>
+
+        <br>
+
+        <div class="team-name">
+            {{ home }} (홈) 🏠
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar home-bar" style="width: {{ home_prob }}%;">
+                {{ home_prob }}%
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>예측 신뢰도</h2>
+
+        <div class="progress">
+
+            <div class="progress-bar confidence-bar" style="width: {{ confidence }}%;">
+
+                {{ confidence }}%
+
+            </div>
+
+        </div>
+
+        <h2>팀 전력 비교</h2>
+
+        <table>
+
+            <tr>
+
+                <th>항목</th>
+
+                <th>{{ away }}</th>
+
+                <th>{{ home }}</th>
+
+            </tr>
+
+            <tr>
+                <td>타율</td>
+
+                <td>{{ "%.3f"|format(statA.Team_AVG) }}</td>
+                <td>{{ "%.3f"|format(statB.Team_AVG) }}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>출루율</td>
+
+                <td>{{ "%.3f"|format(statA.Team_OBP) }}</td>
+
+                <td>{{ "%.3f"|format(statB.Team_OBP) }}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>장타율</td>
+
+                <td>{{ "%.3f"|format(statA.Team_SLG) }}</td>
+
+                <td>{{ "%.3f"|format(statB.Team_SLG) }}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>홈런</td>
+
+                <td>{{ "%.1f"|format(statA.HR) }}</td>
+
+                <td>{{ "%.1f"|format(statB.HR) }}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>방어율</td>
+
+                <td>{{ "%.3f"|format(statA.Team_ERA) }}</td>
+
+                <td>{{ "%.3f"|format(statB.Team_ERA) }}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>K/BB</td>
+
+                <td>{{ "%.3f"|format(statA.Team_K_BB) }}</td>
+
+                <td>{{ "%.3f"|format(statB.Team_K_BB) }}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>상대전적</td>
+
+                <td>{{ h2h }}%</td>
+
+                <td>{{ 100-h2h }}%</td>
+
+            </tr>
+
+        </table>
+
+        <br>
+
+        <button onclick="history.back()">
+
+            캘린더로 돌아가기
+
+        </button>
+
+    </div>
+
+</body>
+
+</html>

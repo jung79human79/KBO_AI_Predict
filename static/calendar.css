@@ -1,0 +1,468 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===========================
+   전체 화면
+=========================== */
+/*
+body{
+    margin:0;
+    padding:40px;
+    background:#f4f6f9;
+    font-family:"맑은 고딕", sans-serif;
+}
+*/
+body {
+    background-color: #1a1d24;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 540px;
+    /* 크기를 대폭 키움 */
+    background-color: #2c313e;
+    padding: 50px 40px;
+    /* 패딩 확대 */
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+h2 {
+    font-size: 32px;
+    /* 폰트 확대 */
+    color: #4caf50;
+    text-align: center;
+    margin-bottom: 35px;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 16px;
+    /* 입력창 확대 */
+    font-size: 16px;
+    background-color: #1e222b;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: #fff;
+    outline: none;
+    transition: border 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #4caf50;
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 18px;
+    /* 버튼 크기 확대 */
+    background-color: #4caf50;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 15px;
+}
+
+.auth-btn:hover {
+    background-color: #45a049;
+}
+
+.switch-link {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 15px;
+    color: #aaa;
+}
+
+.switch-link a {
+    color: #4caf50;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.switch-link a:hover {
+    text-decoration: underline;
+}
+
+.flash-message {
+    background-color: rgba(244, 67, 54, 0.2);
+    border-left: 4px solid #f44336;
+    padding: 15px;
+    margin-bottom: 25px;
+    border-radius: 4px;
+    font-size: 15px;
+    color: #ff8a80;
+}
+
+/* ===========================
+   메인 박스
+=========================== */
+
+.predict-container{
+
+    width:900px;
+
+    margin:0 auto;
+
+    background:white;
+
+    border-radius:12px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+
+    padding:40px;
+
+}
+
+/* ===========================
+   제목
+=========================== */
+
+.predict-container h1{
+
+    text-align:center;
+
+    color:#1E88E5;
+
+    margin-bottom:40px;
+
+}
+
+/* ===========================
+   경기 제목
+=========================== */
+
+.match-title{
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+}
+
+.match-title span{
+
+    color:#E53935;
+
+    margin:0 30px;
+
+}
+
+/* ===========================
+   승률
+=========================== */
+
+.probability{
+
+    display:flex;
+
+    justify-content:space-around;
+
+    margin-bottom:30px;
+
+}
+
+.team{
+
+    width:40%;
+
+    text-align:center;
+
+}
+
+.team h2{
+
+    margin-bottom:10px;
+
+    color:#444;
+
+}
+
+.percent{
+
+    font-size:42px;
+
+    color:#1565C0;
+
+    font-weight:bold;
+
+}
+
+/* ===========================
+   팀 전력 테이블
+=========================== */
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:20px;
+    background: white;
+    color: #222;
+
+
+}
+
+table th{
+
+    background:#1976D2;
+
+    color:white;
+
+    padding:14px;
+
+    font-size:18px;
+
+}
+
+table td{
+    color: #222;
+    background: white;
+
+    text-align:center;
+
+    padding:12px;
+
+    border-bottom:1px solid #ddd;
+
+    font-size:17px;
+
+}
+
+table tr:nth-child(even){
+
+    background:#f8f8f8;
+
+}
+
+table tr:hover{
+
+    background:#eeeeee;
+
+}
+
+/* ===========================
+   AI 승리팀
+=========================== */
+
+.winner{
+
+    margin-top:35px;
+
+    text-align:center;
+
+}
+
+.winner h2{
+
+    color:#D32F2F;
+
+    font-size:38px;
+
+    margin-top:10px;
+
+}
+
+/* ===========================
+   버튼
+=========================== */
+
+button{
+
+    display:block;
+
+    width:250px;
+
+    margin:30px auto 0;
+
+    padding:14px;
+
+    font-size:18px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#1976D2;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+}
+
+button:hover{
+
+    background:#1565C0;
+
+}
+
+/* ===========================
+   구분선
+=========================== */
+
+hr{
+
+    margin:35px 0;
+
+    border:0;
+
+    border-top:2px solid #ddd;
+
+}
+.progress{
+    width:100%;
+    height:28px;
+    background:#ddd;
+    border-radius:15px;
+    overflow:hidden;
+    margin-bottom:20px;
+}
+
+.confidence-bar{
+    height:100%;
+    background:#ff9800;
+    color:white;
+    font-weight:bold;
+    text-align:center;
+    line-height:28px;
+    transition:width .5s;
+}
+/* 
+.progress{
+
+    width:100%;
+
+    height:30px;
+
+    background:#ddd;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    margin-bottom:20px;
+
+} */
+
+.progress-bar{
+
+    height:100%;
+
+    color:white;
+
+    font-weight:bold;
+
+    text-align:center;
+
+    line-height:30px;
+
+}
+
+.away-bar{
+
+    background:#1565C0;
+
+}
+
+.home-bar{
+
+    background:#D32F2F;
+
+}
+.vs-bar{
+
+    display:flex;
+
+    width:100%;
+
+    height:45px;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    font-weight:bold;
+
+    color:white;
+
+    margin:20px 0;
+
+}
+
+.away-side{
+
+    background:#1976D2;
+
+    display:flex;
+
+    justify-content:flex-start;
+
+    align-items:center;
+
+    padding-left:15px;
+
+}
+
+.home-side{
+
+    background:#E53935;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    padding-right:15px;
+
+}
+.confidence-box{
+    width:180px;
+    margin:20px auto;
+    padding:15px;
+    text-align:center;
+    font-size:28px;
+    font-weight:bold;
+    border-radius:10px;
+    background:#1976d2;
+    color:white;
+}
