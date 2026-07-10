@@ -102,6 +102,60 @@
             background-color: #4caf50;
             color: #fff;
         }
+
+        .fc-daygrid-day-frame {
+            position: relative;
+        }
+
+        .no-game {
+
+            position: absolute;
+
+            top: 52%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            opacity: 0.12;
+
+            pointer-events: none;
+
+            user-select: none;
+
+            z-index: 0;
+
+        }
+
+        .no-game .ball {
+
+            font-size: 48px;
+
+            line-height: 1;
+
+        }
+
+        .no-game .text {
+
+            margin-top: 6px;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            color: white;
+
+            letter-spacing: 1px;
+
+        }
+
+        .fc-event {
+            position: relative;
+            z-index: 5;
+        }
     </style>
 </head>
 
@@ -139,6 +193,52 @@
                     height: 800,
 
                     events: '/events',
+
+                    eventsSet: function (events) {
+
+                        // 기존 "경기 없음" 모두 삭제
+                        document.querySelectorAll(".no-game").forEach(function (e) {
+                            e.remove();
+                        });
+
+                        // 현재 달의 모든 날짜 셀 검사
+                        document.querySelectorAll(".fc-daygrid-day").forEach(function (day) {
+
+                            const date = day.getAttribute("data-date");
+
+                            if (!date) return;
+
+                            // 해당 날짜 이벤트 존재 여부
+                            const hasEvent = events.some(function (event) {
+
+                                return event.startStr.substring(0, 10) === date;
+
+                            });
+
+                            // 이벤트가 없으면 표시
+                            if (!hasEvent) {
+
+                                const frame = day.querySelector(".fc-daygrid-day-frame");
+
+                                if (!frame) return;
+
+                                const div = document.createElement("div");
+
+                                div.className = "no-game";
+
+                                div.innerHTML = `
+                                            <div class="ball">⚾</div>
+                                            <div class="text">경기 없음</div>
+                                            `;
+
+                                frame.appendChild(div);
+
+                            }
+
+                        });
+
+                    },
+
 
                     eventClick: function (info) {
                         // FullCalendar에서 기본적으로 제공하는 정보는 title, start, end 등입니다.
